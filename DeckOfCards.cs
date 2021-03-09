@@ -6,9 +6,9 @@ namespace Uppgift4
 {
     public class DeckOfCards
     {
-        private Dictionary<int, int> Deck = new Dictionary<int, int>();
+        private Dictionary<int, int> Value = new Dictionary<int, int>();
+        private Dictionary<int, string> Face = new Dictionary<int, string>();
         public int[] Order { get; set; }
-        private IHand _hand;
         private Random r = new Random();
         public DeckOfCards() //IDeck deck
         {
@@ -24,21 +24,24 @@ namespace Uppgift4
         private void CreateDeck(int length)
         {
             int key = 0;
+            var faces = new List<string>{ "Spades", "Clover", "Hearts", "Diamonds" };
             for (int i = 0; i < 4; i++)
             {
                 for (int value = 1; value <= 13; value++)
                 {
-                    Deck.Add(key, value);
+                    Value.Add(key, value);
+                    Face.Add(key, faces[i]);
                     key++;
                 }
             }
             
         }
-
+        // Returns the top 5 cards in the deck representing by indices in the deck
         public List<int> DealtCards()
         {
-            var hand = Order.Take(5);
-            return hand.OrderBy(num => num).ToList();
+            //var hand = Order.Take(5);
+            //return hand.OrderBy(num => num).ToList();
+            return Order.Take(5).ToList();
         }
 
         internal void Shuffle()
@@ -52,7 +55,15 @@ namespace Uppgift4
                 Order[i] = Order[k];
                 Order[k] = temp;
             }
-            Console.WriteLine("Deck has been shuffled.");
+        }
+
+        public int GetValue(int card)
+        {
+            return Value[card];
+        }
+        public string GetFace(int card)
+        {
+            return Face[card];
         }
     }
 }
