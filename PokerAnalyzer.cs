@@ -21,36 +21,12 @@ namespace Uppgift4
 
         internal void CheckHand()
         {
-            //int matches = 0;
-            //bool check;
-            //foreach (var rank in _wantedHand.RankOfHand)
-            //{
-            //    Console.Write($"Checking rank: {rank} = ");
-            //    if (_hand.RankOfHand.Contains(rank))
-            //    {
-            //        matches++;
-            //        check = true;
-            //    }
-            //    else
-            //    {
-            //        check = false;
-            //    }
-            //    Console.Write(check);
-            //    Console.WriteLine();
-            //}
             var trueforall = _wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c));
-
             if (trueforall)
             {
                 Console.WriteLine("Found hand!");
                 WantedHandDealt = true;
-            }
-            //if (matches == _wantedHand.RankOfHand.Count)
-            //{
-            //    WantedHandDealt = true;
-            //    Console.WriteLine($"Found hand! matches: {matches} of {_wantedHand.RankOfHand.Count}");
-            //}
-            
+            }     
         }
 
         internal void ShowHand()
