@@ -27,6 +27,12 @@ namespace Uppgift4
                 case 5:
                     CreateFlush();
                     break;
+                case 6:
+                    CreateFullHouse();
+                    break;
+                case 7:
+                    CreateFourOfAKind();
+                    break;
                 case 8:
                     CreateStraightFlush();
                     break;
@@ -38,6 +44,24 @@ namespace Uppgift4
                     break;
             }
             
+        }
+
+        private void CreateFullHouse()
+        {
+            _hand.AddCard(7, "Diamonds");
+            _hand.AddCard(7, "Hearts");
+            _hand.AddCard(7, "Clover");
+            _hand.AddCard(12, "Hearts");
+            _hand.AddCard(12, "Spades");
+        }
+
+        private void CreateFourOfAKind()
+        {
+            _hand.AddCard(7, "Diamonds");
+            _hand.AddCard(7, "Hearts");
+            _hand.AddCard(7, "Clover");
+            _hand.AddCard(12, "Hearts");
+            _hand.AddCard(7, "Spades");
         }
 
         private void CreateFlush()

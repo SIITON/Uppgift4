@@ -25,7 +25,7 @@ namespace Uppgift4
             Console.WriteLine("Let's deal some cards til we get a Royal Flush!");
             //var wantedHand = Console.ReadLine();
             
-            var _hand = new FakePokerHands((int)Pokerhands.ThreeOfAKind).GetHand();
+            var _hand = new FakePokerHands((int)Pokerhands.FourOfAKind).GetHand();
             var stopwatch = Stopwatch.StartNew();
             var poker = new PokerAnalyzer(_hand);
             Console.WriteLine("Starting...");

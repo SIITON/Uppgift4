@@ -52,13 +52,11 @@ namespace Uppgift4
             {
                 ranks.Add((int)Pokerhands.TwoPair);
             }
-            var triplets = Values.Triplets();
-            if (triplets.Count() == 1)
+            if (Values.Triplets().Count() == 1)
             {
                 ranks.Add((int)Pokerhands.ThreeOfAKind);
             }
-            var quadruples = Values.Quadruplets();
-            if (quadruples.Count() == 1)
+            if (Values.Quadruplets().Count() == 1)
             {
                 ranks.Add((int)Pokerhands.FourOfAKind);
             }
@@ -79,6 +77,11 @@ namespace Uppgift4
                 HighCard = Values.Max();
             }
             ranks.Add((int)Pokerhands.HighCard);
+            if (ranks.Contains((int)Pokerhands.ThreeOfAKind) && ranks.Contains((int)Pokerhands.Pair))
+            {
+                ranks.Add((int)Pokerhands.FullHouse);
+            }
+
             if (ranks.Contains((int)Pokerhands.Straight) && ranks.Contains((int)Pokerhands.Flush))
             {
                 ranks.Add((int)Pokerhands.StraightFlush);
