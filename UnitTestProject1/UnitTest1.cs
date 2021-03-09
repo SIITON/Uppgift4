@@ -8,7 +8,7 @@ using Uppgift4.Extensions;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class Hand_Class
     {
 		enum Pokerhands
 		{
@@ -25,40 +25,7 @@ namespace UnitTestProject1
 		}
 		public List<int> Values { get; set; }
 		public List<string> Faces { get; set; }
-		//[]
-		//public void Setup()
-  //      {
-		//	Values.Add(4);
-		//	Values.Add(2);
-		//	Values.Add(3);
-		//	Values.Add(2);
-		//	Values.Add(1);
-			
-		//}
-        [TestMethod]
-        public void TestMethod1()
-        {
-			
-			foreach (var item in Values)
-			{
-				Console.Write(item);
-			}
-			Console.WriteLine();
 
-			var duplicates = Values.GroupBy(x => x)
-								   .Where(g => g.Count() > 1)
-								   .Select(g => g.Key);
-			foreach (var item in duplicates)
-			{
-				Console.Write(item);
-			}
-			Console.WriteLine();
-			var distinct = Values.Distinct();
-			foreach (var item in distinct)
-			{
-				Console.Write(item);
-			}
-		}
 		[TestMethod]
 		public void Can_Analyze_No_Pair()
         {
