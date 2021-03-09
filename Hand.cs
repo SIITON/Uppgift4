@@ -68,14 +68,9 @@ namespace Uppgift4
             {
                 ranks.Add((int)Pokerhands.Flush);
             }
-            if (Values.Min() == 1)
-            {
-                HighCard = 14;
-            }
-            else
-            {
-                HighCard = Values.Max();
-            }
+
+            HighCard = (Values.Min() == 1) ? 14 : Values.Max();
+
             ranks.Add((int)Pokerhands.HighCard);
             if (ranks.Contains((int)Pokerhands.ThreeOfAKind) && ranks.Contains((int)Pokerhands.Pair))
             {
