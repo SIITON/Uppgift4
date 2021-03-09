@@ -24,6 +24,9 @@ namespace Uppgift4
                 case 4:
                     CreateStraight();
                     break;
+                case 5:
+                    CreateFlush();
+                    break;
                 case 8:
                     CreateStraightFlush();
                     break;
@@ -35,6 +38,15 @@ namespace Uppgift4
                     break;
             }
             
+        }
+
+        private void CreateFlush()
+        {
+            _hand.AddCard(1, "Diamonds");
+            _hand.AddCard(10, "Hearts");
+            _hand.AddCard(11, "Hearts");
+            _hand.AddCard(12, "Hearts");
+            _hand.AddCard(13, "Hearts");
         }
 
         private void CreateRoyalFlush()
@@ -80,11 +92,6 @@ namespace Uppgift4
             _hand.AddCard(5, "Hearts");
             _hand.AddCard(10, "Diamonds");
             _hand.AddCard(5, "Clover");
-            Console.Write("Created wanted hand with rank:");
-            foreach (var rank in _hand.RankOfHand)
-            {
-                Console.Write($"{rank}\t");
-            }
         }
 
         private void CreatePair()
@@ -94,12 +101,6 @@ namespace Uppgift4
             _hand.AddCard(1, "Hearts");
             _hand.AddCard(10, "Diamonds");
             _hand.AddCard(2, "Clover");
-            Console.Write("Created wanted hand with rank:");
-            foreach (var rank in _hand.RankOfHand)
-            {
-                Console.Write($"{rank}\t");
-            }
-
         }
 
         public Hand GetHand()

@@ -10,7 +10,7 @@ namespace Uppgift4
         private Dictionary<int, string> Face = new Dictionary<int, string>();
         public int[] Order { get; set; }
         private Random r = new Random();
-        public DeckOfCards() //IDeck deck
+        public DeckOfCards()
         {
             Order = new int[52];
             for (int i = 0; i < Order.Length; i++)
@@ -34,13 +34,10 @@ namespace Uppgift4
                     key++;
                 }
             }
-            
         }
         // Returns the top 5 cards in the deck representing by indices in the deck
         public List<int> DealtCards()
         {
-            //var hand = Order.Take(5);
-            //return hand.OrderBy(num => num).ToList();
             return Order.Take(5).ToList();
         }
 

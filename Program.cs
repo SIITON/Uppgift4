@@ -22,11 +22,13 @@ namespace Uppgift4
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Let's deal some cards til we get a straight flush!");
+            Console.WriteLine("Let's deal some cards til we get a Royal Flush!");
             //var wantedHand = Console.ReadLine();
-            var _hand = new FakePokerHands((int)Pokerhands.RoyalFlush).GetHand();
+            
+            var _hand = new FakePokerHands((int)Pokerhands.ThreeOfAKind).GetHand();
             var stopwatch = Stopwatch.StartNew();
             var poker = new PokerAnalyzer(_hand);
+            Console.WriteLine("Starting...");
             while (!poker.WantedHandDealt)
             {
                 poker.DealHand();
@@ -34,17 +36,10 @@ namespace Uppgift4
             }
             var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;
             var avg = poker.NumOfShuffles / elapsedTotalSeconds;
-            Console.WriteLine("Done! Results:");
-            Console.WriteLine($"{elapsedTotalSeconds:N2} s, Tries per second: {avg:N1}");
+
+            Console.WriteLine($"Done! In {elapsedTotalSeconds:N2} s, shuffles per second: {avg:N1}");
             Console.WriteLine($"Hand given after {poker.NumOfShuffles} shuffles.");
             poker.ShowHand();
-            
-            //do
-            //{
-            //    deck.Shuffle();
-            //    _hand.Values = deck.DealCards();
-            //} while (_hand.NotEqualTo(wantedHand));
-            //_hand.ShowCards();
         }
     }
 }

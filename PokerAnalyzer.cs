@@ -11,8 +11,6 @@ namespace Uppgift4
         private Hand _wantedHand { get; set; }
         private Hand _hand;
         private DeckOfCards _deck;
-        
-
         public PokerAnalyzer(Hand wantedhand)
         {
             _wantedHand = wantedhand;

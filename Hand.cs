@@ -52,6 +52,16 @@ namespace Uppgift4
             {
                 ranks.Add((int)Pokerhands.TwoPair);
             }
+            var triplets = Values.Triplets();
+            if (triplets.Count() == 1)
+            {
+                ranks.Add((int)Pokerhands.ThreeOfAKind);
+            }
+            var quadruples = Values.Quadruplets();
+            if (quadruples.Count() == 1)
+            {
+                ranks.Add((int)Pokerhands.FourOfAKind);
+            }
             if (Values.IsStraight())
             {
                 ranks.Add((int)Pokerhands.Straight);
