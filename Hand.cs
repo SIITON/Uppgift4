@@ -69,6 +69,14 @@ namespace Uppgift4
                 HighCard = Values.Max();
             }
             ranks.Add((int)Pokerhands.HighCard);
+            if (ranks.Contains((int)Pokerhands.Straight) && ranks.Contains((int)Pokerhands.Flush))
+            {
+                ranks.Add((int)Pokerhands.StraightFlush);
+            }
+            if (ranks.Contains((int)Pokerhands.StraightFlush) && Values.Max() == 13 && HighCard == 14)
+            {
+                ranks.Add((int)Pokerhands.RoyalFlush);
+            }
             RankOfHand = ranks;
         }
     }

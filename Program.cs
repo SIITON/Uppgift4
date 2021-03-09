@@ -24,7 +24,7 @@ namespace Uppgift4
         {
             Console.WriteLine("Let's deal some cards til we get a straight flush!");
             //var wantedHand = Console.ReadLine();
-            var _hand = new FakePokerHands((int)Pokerhands.Pair).GetHand();
+            var _hand = new FakePokerHands((int)Pokerhands.RoyalFlush).GetHand();
             var stopwatch = Stopwatch.StartNew();
             var poker = new PokerAnalyzer(_hand);
             while (!poker.WantedHandDealt)
@@ -34,8 +34,8 @@ namespace Uppgift4
             }
             var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;
             var avg = poker.NumOfShuffles / elapsedTotalSeconds;
-            Console.WriteLine("Done!");
-            Console.WriteLine($"{elapsedTotalSeconds:N1} s, Tries per second: {avg:N1}");
+            Console.WriteLine("Done! Results:");
+            Console.WriteLine($"{elapsedTotalSeconds:N2} s, Tries per second: {avg:N1}");
             Console.WriteLine($"Hand given after {poker.NumOfShuffles} shuffles.");
             poker.ShowHand();
             

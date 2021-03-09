@@ -13,9 +13,9 @@ namespace Uppgift4
         private DeckOfCards _deck;
         
 
-        public PokerAnalyzer(Hand hand)
+        public PokerAnalyzer(Hand wantedhand)
         {
-            _wantedHand = hand;
+            _wantedHand = wantedhand;
             _deck = new DeckOfCards();
             NumOfShuffles = 0;
             WantedHandDealt = false;
@@ -23,18 +23,35 @@ namespace Uppgift4
 
         internal void CheckHand()
         {
-            foreach (var rank in _wantedHand.RankOfHand)
+            //int matches = 0;
+            //bool check;
+            //foreach (var rank in _wantedHand.RankOfHand)
+            //{
+            //    Console.Write($"Checking rank: {rank} = ");
+            //    if (_hand.RankOfHand.Contains(rank))
+            //    {
+            //        matches++;
+            //        check = true;
+            //    }
+            //    else
+            //    {
+            //        check = false;
+            //    }
+            //    Console.Write(check);
+            //    Console.WriteLine();
+            //}
+            var trueforall = _wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c));
+
+            if (trueforall)
             {
-                Console.WriteLine($"Checking rank: {rank}");
-                if (_hand.RankOfHand.Contains(rank))
-                {
-                    WantedHandDealt = true;
-                }
-                else
-                {
-                    WantedHandDealt = false;
-                }
+                Console.WriteLine("Found hand!");
+                WantedHandDealt = true;
             }
+            //if (matches == _wantedHand.RankOfHand.Count)
+            //{
+            //    WantedHandDealt = true;
+            //    Console.WriteLine($"Found hand! matches: {matches} of {_wantedHand.RankOfHand.Count}");
+            //}
             
         }
 
@@ -62,8 +79,7 @@ namespace Uppgift4
             {
                 var face = _deck.GetFace(card);
                 var value = _deck.GetValue(card);
-                hand.AddCard(value, face);
-                
+                hand.AddCard(value, face); 
             }
             _hand = hand;
         }
