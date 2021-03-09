@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Uppgift4;
 using Uppgift4.Extensions;
 
 namespace UnitTestProject1
@@ -169,6 +170,20 @@ namespace UnitTestProject1
             Assert.IsTrue(isStraight && isFlush);
 		}
 		[TestMethod]
+		public void Can_Analyze_If_Royal_Flush()
+		{
+			var hand = new FakePokerHands((int)Pokerhands.RoyalFlush).GetHand();
+
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.RoyalFlush));
+		}
+		[TestMethod]
+		public void Can_Analyze_No_Royal_Flush()
+		{
+			var hand = new FakePokerHands((int)Pokerhands.Straight).GetHand();
+
+			Assert.IsFalse(hand.RankOfHand.Contains((int)Pokerhands.RoyalFlush));
+		}
+		[TestMethod]
 		public void Can_Analyze_No_Flush()
         {
 			var isFlush = false;
@@ -182,7 +197,7 @@ namespace UnitTestProject1
 			Assert.IsFalse(isFlush);
 		}
 		[TestMethod]
-		public void Can_Analyze_Is_Flush()
+		public void Can_Analyze_If_Flush()
 		{
 			var isFlush = false;
 			var faces = new List<string> { "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds" };
