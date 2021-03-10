@@ -11,6 +11,7 @@ namespace Uppgift4
         private Hand _wantedHand { get; set; }
         private Hand _hand;
         private DeckOfCards _deck;
+        public static Dictionary<int, string> TypeOfHand = new Dictionary<int, string>();
         public PokerAnalyzer(Hand wantedhand)
         {
             _wantedHand = wantedhand;
@@ -39,7 +40,6 @@ namespace Uppgift4
             Console.WriteLine("+---------------+");
             Console.WriteLine($"Highest rank: {_hand.RankOfHand.Max()}");
             Console.WriteLine($"Highcard: {_hand.HighCard}");
-            
         }
 
         public void Run()
@@ -64,6 +64,51 @@ namespace Uppgift4
                 hand.AddCard(value, face); 
             }
             _hand = hand;
+        }
+        public static void DefineTypesOfPokerHands()
+        {
+            TypeOfHand.Add((int)Pokerhands.HighCard, "High Card (Ace)");
+            TypeOfHand.Add((int)Pokerhands.Pair, "Pair");
+            TypeOfHand.Add((int)Pokerhands.TwoPair, "Two Pair");
+            TypeOfHand.Add((int)Pokerhands.ThreeOfAKind, "Three Of A Kind");
+            TypeOfHand.Add((int)Pokerhands.Straight, "Straight");
+            TypeOfHand.Add((int)Pokerhands.Flush, "Flush");
+            TypeOfHand.Add((int)Pokerhands.FullHouse, "Full House");
+            TypeOfHand.Add((int)Pokerhands.FourOfAKind, "Four Of A Kind");
+            TypeOfHand.Add((int)Pokerhands.StraightFlush, "Straight Flush");
+            TypeOfHand.Add((int)Pokerhands.RoyalFlush, "Royal Flush");
+        }
+
+        public static void PrintPossibleHandsToSearchFor()
+        {
+            Console.WriteLine("+-----------------------+");
+            Console.WriteLine("| Key : Type of hand    |");
+            Console.WriteLine("+-----------------------+");
+            foreach (var item in TypeOfHand)
+            {
+                Console.WriteLine(String.Format("|  {0}  : {1,15} |", item.Key, item.Value));
+            }
+            Console.WriteLine("+-----------------------+");
+        }
+
+        public static Hand LetUserDecideWantedHand()
+        {
+            int typeofhand = 0;
+            bool isInRange = false;
+            while (!isInRange)
+            {
+                Console.Write("Select key: ");
+                if (int.TryParse(Console.ReadLine(), out typeofhand))
+                {
+                    isInRange = (typeofhand >= 0 && typeofhand < 10) ? true : false;
+                }
+                if (!isInRange)
+                {
+                    Console.WriteLine("Invalid key, try again");
+                }
+            }
+            Console.WriteLine($"Let's get a {TypeOfHand[typeofhand]}!");
+            return new FakePokerHands(typeofhand).GetHand();
         }
     }
 }
