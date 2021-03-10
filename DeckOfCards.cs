@@ -8,7 +8,7 @@ namespace Uppgift4
     {
         private Dictionary<int, int> Value = new Dictionary<int, int>();
         private Dictionary<int, string> Face = new Dictionary<int, string>();
-        public int[] Order { get; set; }
+        public int[] Order { get; private set; }
         private Random r = new Random();
         public DeckOfCards()
         {
@@ -40,7 +40,7 @@ namespace Uppgift4
             return Order.Take(5).ToList();
         }
 
-        internal void Shuffle()
+        public void Shuffle()
         {
             // Fisher-Yates shuffle method
             int temp; int k;
