@@ -24,7 +24,6 @@ namespace Uppgift4
             var trueforall = _wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c));
             if (trueforall)
             {
-                Console.WriteLine("Found hand!");
                 WantedHandDealt = true;
             }     
         }
