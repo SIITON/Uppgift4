@@ -27,16 +27,17 @@ namespace Uppgift4
             DefineTypesOfPokerHands();
             PrintPossibleHandsToSearchFor();
             Hand wantedHand = LetUserDecideWantedHand();
+            Console.WriteLine("Shuffling & dealing..");
             var stopwatch = Stopwatch.StartNew();
             var poker = new PokerAnalyzer(wantedHand);
-            Console.WriteLine("Starting...");
             poker.Run();
-            
             var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;
             var avgShufflesPerSecond = poker.NumOfShuffles / elapsedTotalSeconds;
 
-            Console.WriteLine($"Done! In {elapsedTotalSeconds:N2} s, shuffles per second: {avgShufflesPerSecond:N1}");
-            Console.WriteLine($"Hand given after {poker.NumOfShuffles} shuffles:");
+            Console.WriteLine($"Done!");
+            Console.WriteLine($"- Time:       {elapsedTotalSeconds:N3} s");
+            Console.WriteLine($"- Shuffles:   {poker.NumOfShuffles}");
+            Console.WriteLine($"- Shuffles/s: {avgShufflesPerSecond:N1}");
             poker.ShowHand();
         }
 
