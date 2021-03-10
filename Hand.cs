@@ -30,6 +30,8 @@ namespace Uppgift4
         {
             var ranks = new List<int>();
             var pair_values = Values.Duplicates();
+            var triplets = Values.Triplets();
+            var tripletsIsNotSameAsPair = false;
             if (pair_values.Count() == 1)
             {
                 ranks.Add((int)Pokerhands.Pair);
@@ -38,7 +40,7 @@ namespace Uppgift4
             {
                 ranks.Add((int)Pokerhands.TwoPair);
             }
-            if (Values.Triplets().Count() == 1)
+            if (triplets.Count() == 1)
             {
                 ranks.Add((int)Pokerhands.ThreeOfAKind);
             }
@@ -60,6 +62,7 @@ namespace Uppgift4
             {
                 ranks.Add((int)Pokerhands.HighCard);
             }
+            
             if (ranks.Contains((int)Pokerhands.ThreeOfAKind) && ranks.Contains((int)Pokerhands.Pair))
             {
                 ranks.Add((int)Pokerhands.FullHouse);

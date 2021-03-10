@@ -9,7 +9,7 @@ namespace Uppgift4.Extensions
         public static IEnumerable<int> Duplicates(this IEnumerable<int> sequence)
         {
             return sequence.GroupBy(x => x)
-                           .Where(g => g.Count() > 1)
+                           .Where(g => g.Count() == 2)
                            .Select(g => g.Key);
         }
         public static List<int> Ordered(this IEnumerable<int> sequence)
