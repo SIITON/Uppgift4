@@ -15,6 +15,7 @@ namespace Uppgift4
         {
             _wantedHand = wantedhand;
             _deck = new DeckOfCards();
+            Console.WriteLine($"Deck of size {_deck.Order.Length} initialized.");
             NumOfShuffles = 0;
             WantedHandDealt = false;
         }
