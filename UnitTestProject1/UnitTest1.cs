@@ -25,87 +25,47 @@ namespace UnitTestProject1
 		}
 		public List<int> Values { get; set; }
 		public List<string> Faces { get; set; }
+		[TestMethod]
+		public void Can_Analyze_If_Pair()
+		{
+			Hand hand = new FakePokerHands((int)Pokerhands.Pair).GetHand();
 
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.Pair));
+		}
 		[TestMethod]
 		public void Can_Analyze_No_Pair()
         {
-			var val = new List<int>();
-			val.Add(4);
-			val.Add(8);
-			val.Add(3);
-			val.Add(2);
-			val.Add(1);
-			var isPair = false;
+			Hand hand = new FakePokerHands((int)Pokerhands.RoyalFlush).GetHand();
 
-			var pair_values = val.Duplicates();
-			if (pair_values.Count() == 1)
-			{
-				isPair = true;
-			}
-
-			Assert.IsFalse(isPair);
+			Assert.IsFalse(hand.RankOfHand.Contains((int)Pokerhands.Pair));
 		}
 		[TestMethod]
 		public void Can_Analyze_If_Two_Pair()
 		{
-			var val = new List<int>();
-			val.Add(4);
-			val.Add(2);
-			val.Add(4);
-			val.Add(2);
-			val.Add(1);
-			var isTwoPair = false;
+			Hand hand = new FakePokerHands((int)Pokerhands.TwoPair).GetHand();
 
-			var pair_values = val.Duplicates();
-			if (pair_values.Count() == 2)
-			{
-				isTwoPair = true;
-			}
-
-			Assert.IsTrue(isTwoPair);
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.TwoPair));
 		}
 		[TestMethod]
 		public void Can_Analyze_No_Two_Pair()
 		{
-			var val = new List<int>();
-			val.Add(12);
-			val.Add(2);
-			val.Add(4);
-			val.Add(8);
-			val.Add(1);
-			var isTwoPair = false;
+			Hand hand = new FakePokerHands((int)Pokerhands.Pair).GetHand();
 
-			var pair_values = val.Duplicates();
-			if (pair_values.Count() == 2)
-			{
-				isTwoPair = true;
-			}
-
-			Assert.IsFalse(isTwoPair);
+			Assert.IsFalse(hand.RankOfHand.Contains((int)Pokerhands.TwoPair));
 		}
 		[TestMethod]
 		public void Can_Analyze_If_Straight()
 		{
-			var val = new List<int>();
-			val.Add(3);
-			val.Add(5);
-			val.Add(7);
-			val.Add(4);
-			val.Add(6);
+			Hand hand = new FakePokerHands((int)Pokerhands.Straight).GetHand();
 
-			Assert.IsTrue(val.IsStraight());
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.Straight));
 		}
 		[TestMethod]
 		public void Can_Analyze_No_Straight()
 		{
-			var val = new List<int>();
-			val.Add(1);
-			val.Add(7);
-			val.Add(7);
-			val.Add(4);
-			val.Add(6);
+			Hand hand = new FakePokerHands((int)Pokerhands.Flush).GetHand();
 
-			Assert.IsFalse(val.IsStraight());
+			Assert.IsFalse(hand.RankOfHand.Contains((int)Pokerhands.Straight));
 		}
 		[TestMethod]
 		public void Can_Analyze_If_Straight_With_Ace()
