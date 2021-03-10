@@ -6,19 +6,6 @@ namespace Uppgift4
 {
     public class FakePokerHands
     {
-        enum Pokerhands
-        {
-            HighCard,
-            Pair,
-            TwoPair,
-            ThreeOfAKind,
-            Straight,
-            Flush,
-            FullHouse,
-            FourOfAKind,
-            StraightFlush,
-            RoyalFlush,
-        }
         private Hand _hand { get; set; }
         public FakePokerHands(int rank)
         {

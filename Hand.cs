@@ -11,19 +11,6 @@ namespace Uppgift4
         public List<string> Faces { get; private set; }
         public List<int> RankOfHand { get; private set; }
         public int HighCard { get; private set; }
-        enum Pokerhands
-        {
-            HighCard,
-            Pair,
-            TwoPair,
-            ThreeOfAKind,
-            Straight,
-            Flush,
-            FullHouse,
-            FourOfAKind,
-            StraightFlush,
-            RoyalFlush,
-        }
         public Hand()
         {
             Values = new List<int>();

@@ -5,21 +5,22 @@ using System.Linq;
 
 namespace Uppgift4
 {
+    public enum Pokerhands
+    {
+        HighCard,
+        Pair,
+        TwoPair,
+        ThreeOfAKind,
+        Straight,
+        Flush,
+        FullHouse,
+        FourOfAKind,
+        StraightFlush,
+        RoyalFlush,
+    }
     class Program
     {
-        enum Pokerhands
-        {
-            HighCard,
-            Pair,
-            TwoPair,
-            ThreeOfAKind,
-            Straight,
-            Flush,
-            FullHouse,
-            FourOfAKind,
-            StraightFlush,
-            RoyalFlush,
-        }
+        
         public static Dictionary<int, string> TypeOfHand = new Dictionary<int, string>();  
         static void Main(string[] args)
         {
