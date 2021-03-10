@@ -32,7 +32,7 @@ namespace Uppgift4
             Console.WriteLine("Starting...");
             while (!poker.WantedHandDealt)
             {
-                poker.DealHand();
+                poker.DealNewHand();
                 poker.CheckHand();
             }
             var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;

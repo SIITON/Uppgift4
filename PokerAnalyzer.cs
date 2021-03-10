@@ -43,7 +43,7 @@ namespace Uppgift4
             
         }
 
-        public void DealHand()
+        public void DealNewHand()
         {
             _deck.Shuffle();
             NumOfShuffles++;
