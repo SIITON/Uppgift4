@@ -45,7 +45,7 @@ namespace Uppgift4
 
         private static void DefineTypesOfPokerHands()
         {
-            TypeOfHand.Add((int)Pokerhands.HighCard,        "High Card");
+            TypeOfHand.Add((int)Pokerhands.HighCard,        "High Card (Ace)");
             TypeOfHand.Add((int)Pokerhands.Pair,            "Pair");
             TypeOfHand.Add((int)Pokerhands.TwoPair,         "Two Pair");
             TypeOfHand.Add((int)Pokerhands.ThreeOfAKind,    "Three Of A Kind");
