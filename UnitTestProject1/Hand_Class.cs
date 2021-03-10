@@ -114,5 +114,26 @@ namespace Uppgift4.Tests
 
 			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.Flush));
 		}
+		[TestMethod]
+		public void Can_Analyze_If_Three_Of_A_Kind()
+		{
+			Hand hand = new FakePokerHands((int)Pokerhands.ThreeOfAKind).GetHand();
+
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.ThreeOfAKind));
+		}
+		[TestMethod]
+		public void Can_Analyze_If_Full_House()
+		{
+			Hand hand = new FakePokerHands((int)Pokerhands.FullHouse).GetHand();
+
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.FullHouse));
+		}
+		[TestMethod]
+		public void Can_Analyze_No_Full_House()
+		{
+			Hand hand = new FakePokerHands((int)Pokerhands.ThreeOfAKind).GetHand();
+
+			Assert.IsFalse(hand.RankOfHand.Contains((int)Pokerhands.FullHouse));
+		}
 	}
 }
