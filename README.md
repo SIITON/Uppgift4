@@ -21,4 +21,4 @@ The hand is analysed and given ranks according to the keys in the table below.
 
 When a dealt hand contains all ranks in the wanted hand, the shuffling stops and the hand is presented.
 
-The algorithm tops around 190 000 shuffles/s
+The algorithm tops around 190 000 shuffles/s.
