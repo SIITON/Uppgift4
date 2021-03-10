@@ -78,10 +78,10 @@ namespace Uppgift4
 
         private void CreateFlush()
         {
-            _hand.AddCard(1, "Diamonds");
-            _hand.AddCard(10, "Hearts");
+            _hand.AddCard(1, "Hearts");
+            _hand.AddCard(9, "Hearts");
             _hand.AddCard(11, "Hearts");
-            _hand.AddCard(12, "Hearts");
+            _hand.AddCard(4, "Hearts");
             _hand.AddCard(13, "Hearts");
         }
 

@@ -33,7 +33,7 @@ namespace Uppgift4
         {
             for (int i = 0; i < _hand.Values.Count; i++)
             {
-                Console.WriteLine($"{_hand.Values[i]}:{_hand.Faces[i]}");
+                Console.WriteLine($"\t{_hand.Values[i]} : {_hand.Faces[i]}");
             }
             Console.WriteLine($"Highest rank: {_hand.RankOfHand.Max()}");
             Console.WriteLine($"Highcard: {_hand.HighCard}");
