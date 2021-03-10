@@ -100,7 +100,7 @@ namespace Uppgift4
                 Console.Write("Select key: ");
                 if (int.TryParse(Console.ReadLine(), out typeofhand))
                 {
-                    isInRange = (typeofhand >= 0 && typeofhand < 10) ? true : false;
+                    isInRange = (typeofhand >= 0 && typeofhand < 10);
                 }
                 if (!isInRange)
                 {
