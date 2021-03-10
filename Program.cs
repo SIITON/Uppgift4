@@ -75,11 +75,19 @@ namespace Uppgift4
 
         private static Hand LetUserDecideWantedHand()
         {
-            Console.Write("Select key: ");
-            int typeofhand;
-            while (!int.TryParse(Console.ReadLine(), out typeofhand))
+            int typeofhand = 0;
+            bool isInRange = false;
+            while (!isInRange)
             {
-                Console.WriteLine("Invalid key, try again");
+                Console.Write("Select key: ");
+                if (int.TryParse(Console.ReadLine(), out typeofhand))
+                {
+                    isInRange = (typeofhand >= 0 && typeofhand < 10) ? true : false;
+                }
+                if(!isInRange)
+                {
+                    Console.WriteLine("Invalid key, try again");
+                }
             }
             Console.WriteLine($"Let's get a {TypeOfHand[typeofhand]}!");
             return new FakePokerHands(typeofhand).GetHand();
