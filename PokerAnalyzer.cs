@@ -31,10 +31,13 @@ namespace Uppgift4
 
         public void ShowHand()
         {
+            Console.WriteLine("+---------------+");
             for (int i = 0; i < _hand.Values.Count; i++)
             {
-                Console.WriteLine($"\t{_hand.Values[i]} : {_hand.Faces[i]}");
+                var format = String.Format("| {0,2} : {1,8} |", _hand.Values[i], _hand.Faces[i]);
+                Console.WriteLine(format);
             }
+            Console.WriteLine("+---------------+");
             Console.WriteLine($"Highest rank: {_hand.RankOfHand.Max()}");
             Console.WriteLine($"Highcard: {_hand.HighCard}");
             
