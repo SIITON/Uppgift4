@@ -47,9 +47,9 @@ namespace Uppgift4
         {
             _deck.Shuffle();
             NumOfShuffles++;
-            var top_cards = _deck.DealtCards();
+            var topFiveCards = _deck.Order.Take(5).ToList();
             var hand = new Hand();
-            foreach (var card in top_cards)
+            foreach (var card in topFiveCards)
             {
                 var face = _deck.GetFace(card);
                 var value = _deck.GetValue(card);
