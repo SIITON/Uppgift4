@@ -102,9 +102,11 @@ namespace Uppgift4
             {
                 case "Y":
                     result = true;
+                    Console.Clear();
                     break;
                 case "y":
                     result = true;
+                    Console.Clear();
                     break;
                 case "N":
                     result = false;
@@ -117,7 +119,6 @@ namespace Uppgift4
                     result = false;
                     break;
             }
-            Console.Clear();
             return result;
         }
     }
