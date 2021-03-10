@@ -122,59 +122,37 @@ namespace UnitTestProject1
 		[TestMethod]
 		public void Can_Analyze_If_Straight_Flush()
 		{
-			var val = new List<int>();
-			val.Add(1);
-			val.Add(10);
-			val.Add(12);
-			val.Add(11);
-			val.Add(13);
-			
-			var faces = new List<string> { "Spades", "Spades", "Spades", "Spades", "Spades" };
-			var isFlush = faces.IsFlush();
-			var isStraight = val.IsStraight();
-			Assert.IsTrue(isStraight);
-            Assert.IsTrue(isFlush);
-            Assert.IsTrue(isStraight && isFlush);
+			Hand hand = new FakePokerHands((int)Pokerhands.StraightFlush).GetHand();
+
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.StraightFlush));
 		}
 		[TestMethod]
 		public void Can_Analyze_If_Royal_Flush()
 		{
-			var hand = new FakePokerHands((int)Pokerhands.RoyalFlush).GetHand();
+			Hand hand = new FakePokerHands((int)Pokerhands.RoyalFlush).GetHand();
 
 			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.RoyalFlush));
 		}
 		[TestMethod]
 		public void Can_Analyze_No_Royal_Flush()
 		{
-			var hand = new FakePokerHands((int)Pokerhands.Straight).GetHand();
+			Hand hand = new FakePokerHands((int)Pokerhands.Straight).GetHand();
 
 			Assert.IsFalse(hand.RankOfHand.Contains((int)Pokerhands.RoyalFlush));
 		}
 		[TestMethod]
 		public void Can_Analyze_No_Flush()
         {
-			var isFlush = false;
-			var faces = new List<string> { "Spades", "Spades", "Spades", "Hearts", "Diamonds" };
-			var distinctFaces = faces.Distinct();
-			if (distinctFaces.Count() == 1)
-			{
-				isFlush = true;
-			}
+			Hand hand = new FakePokerHands((int)Pokerhands.Straight).GetHand();
 
-			Assert.IsFalse(isFlush);
+			Assert.IsFalse(hand.RankOfHand.Contains((int)Pokerhands.Flush));
 		}
 		[TestMethod]
 		public void Can_Analyze_If_Flush()
 		{
-			var isFlush = false;
-			var faces = new List<string> { "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds" };
-			var distinctFaces = faces.Distinct();
-			if (distinctFaces.Count() == 1)
-			{
-				isFlush = true;
-			}
+			Hand hand = new FakePokerHands((int)Pokerhands.Flush).GetHand();
 
-			Assert.IsTrue(isFlush);
+			Assert.IsTrue(hand.RankOfHand.Contains((int)Pokerhands.Flush));
 		}
 	}
 }
