@@ -23,22 +23,26 @@ namespace Uppgift4
         public static Dictionary<int, string> TypeOfHand = new Dictionary<int, string>();  
         static void Main(string[] args)
         {
-            Console.WriteLine("Let's deal some cards til we get a nice hand!");
             DefineTypesOfPokerHands();
-            PrintPossibleHandsToSearchFor();
-            Hand wantedHand = LetUserDecideWantedHand();
-            Console.WriteLine("Shuffling & dealing..");
-            var stopwatch = Stopwatch.StartNew();
-            var poker = new PokerAnalyzer(wantedHand);
-            poker.Run();
-            var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;
-            var avgShufflesPerSecond = poker.NumOfShuffles / elapsedTotalSeconds;
+            do
+            {
+                Console.WriteLine("Let's deal some cards til we get a nice hand!");
+                PrintPossibleHandsToSearchFor();
+                Hand wantedHand = LetUserDecideWantedHand();
+                Console.WriteLine("Shuffling & dealing..");
+                var stopwatch = Stopwatch.StartNew();
+                var poker = new PokerAnalyzer(wantedHand);
+                poker.Run();
+                var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;
+                var avgShufflesPerSecond = poker.NumOfShuffles / elapsedTotalSeconds;
 
-            Console.WriteLine($"Done!");
-            Console.WriteLine($"- Time:       {elapsedTotalSeconds:N3} s");
-            Console.WriteLine($"- Shuffles:   {poker.NumOfShuffles}");
-            Console.WriteLine($"- Shuffles/s: {avgShufflesPerSecond:N1}");
-            poker.ShowHand();
+                Console.WriteLine($"Done!");
+                Console.WriteLine($"- Time:       {elapsedTotalSeconds:N3} s");
+                Console.WriteLine($"- Shuffles:   {poker.NumOfShuffles}");
+                Console.WriteLine($"- Shuffles/s: {avgShufflesPerSecond:N1}");
+                poker.ShowHand();
+            } while (UserWantsToRunAgain());
+            
         }
 
         private static void DefineTypesOfPokerHands()
@@ -89,6 +93,33 @@ namespace Uppgift4
             }
             Console.WriteLine($"Let's get a {TypeOfHand[typeofhand]}!");
             return new FakePokerHands(typeofhand).GetHand();
+        }
+        public static bool UserWantsToRunAgain()
+        {
+            Console.WriteLine("\nRun again? (Y/n)");
+            var userInput = Console.ReadLine();
+            var result = false;
+            switch (userInput)
+            {
+                case "Y":
+                    result = true;
+                    break;
+                case "y":
+                    result = true;
+                    break;
+                case "N":
+                    result = false;
+                    break;
+                case "n":
+                    result = false;
+                    break;
+                default:
+                    Console.WriteLine("Ok, rage quitting.");
+                    result = false;
+                    break;
+            }
+            Console.Clear();
+            return result;
         }
     }
 }
