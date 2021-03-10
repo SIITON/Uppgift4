@@ -6,40 +6,53 @@ namespace Uppgift4
 {
     public class FakePokerHands
     {
+        enum Pokerhands
+        {
+            HighCard,
+            Pair,
+            TwoPair,
+            ThreeOfAKind,
+            Straight,
+            Flush,
+            FullHouse,
+            FourOfAKind,
+            StraightFlush,
+            RoyalFlush,
+        }
         private Hand _hand { get; set; }
         public FakePokerHands(int rank)
         {
             _hand = new Hand();
             switch (rank)
             {
-                case 0:
+                case (int)Pokerhands.HighCard:
                     CreateHighCardWithAce();
                     break;
-                case 1:
+                case (int)Pokerhands.Pair:
                     CreatePair();
                     break;
-                case 2:
+                case (int)Pokerhands.TwoPair:
                     CreateTwoPair();
                     break;
-                case 3:
+                case (int)Pokerhands.ThreeOfAKind:
                     CreateThreeOfAKind();
                     break;
-                case 4:
+                case (int)Pokerhands.Straight:
                     CreateStraight();
                     break;
-                case 5:
+                case (int)Pokerhands.Flush:
                     CreateFlush();
                     break;
-                case 6:
+                case (int)Pokerhands.FullHouse:
                     CreateFullHouse();
                     break;
-                case 7:
+                case (int)Pokerhands.FourOfAKind:
                     CreateFourOfAKind();
                     break;
-                case 8:
+                case (int)Pokerhands.StraightFlush:
                     CreateStraightFlush();
                     break;
-                case 9:
+                case (int)Pokerhands.RoyalFlush:
                     CreateRoyalFlush();
                     break;
                 default:

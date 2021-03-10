@@ -63,16 +63,14 @@ namespace Uppgift4
         {
             Console.WriteLine("+-----------------------+");
             Console.WriteLine("| Key : Type of hand    |");
-            Console.Write(("+").PadRight(24, '-'));
-            Console.WriteLine("+");
+            Console.WriteLine("+-----------------------+");
             string format;
             foreach (var item in TypeOfHand)
             {
                 format = String.Format("|  {0}  : {1,15} |", item.Key, item.Value);
                 Console.WriteLine(format);
             }
-            Console.Write(("+").PadRight(24, '-'));
-            Console.WriteLine("+");
+            Console.WriteLine("+-----------------------+");
         }
 
         private static Hand LetUserDecideWantedHand()
@@ -114,7 +112,7 @@ namespace Uppgift4
                     result = false;
                     break;
                 default:
-                    Console.WriteLine("Ok, rage quitting.");
+                    Console.WriteLine("Invalid response, quitting.");
                     result = false;
                     break;
             }
