@@ -34,11 +34,6 @@ namespace Uppgift4
                 }
             }
         }
-        // Returns the top 5 cards in the deck
-        public List<int> DealtCards()
-        {
-            return Order.Take(5).ToList();
-        }
 
         public void Shuffle()
         {
