@@ -7,7 +7,6 @@ namespace Uppgift4
 {
     public class Hand
     {
-        public IEnumerable<ICard> Cards { get; set; }
         public List<int> Values { get; private set; }
         public List<string> Faces { get; private set; }
         public List<int> RankOfHand { get; private set; }
