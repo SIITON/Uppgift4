@@ -27,7 +27,6 @@ namespace Uppgift4
             DefineTypesOfPokerHands();
             PrintPossibleHandsToSearchFor();
             Hand wantedHand = LetUserDecideWantedHand();
-            var _hand = new FakePokerHands((int)Pokerhands.RoyalFlush).GetHand();
             var stopwatch = Stopwatch.StartNew();
             var poker = new PokerAnalyzer(wantedHand);
             Console.WriteLine("Starting...");
@@ -46,35 +45,43 @@ namespace Uppgift4
 
         private static void DefineTypesOfPokerHands()
         {
-            TypeOfHand.Add(0, "High Card");
-            TypeOfHand.Add(1, "Pair");
-            TypeOfHand.Add(2, "Two Pair");
-            TypeOfHand.Add(3, "Three Of A Kind");
-            TypeOfHand.Add(4, "Straight");
-            TypeOfHand.Add(5, "Flush");
-            TypeOfHand.Add(6, "Full House");
-            TypeOfHand.Add(7, "Four Of A Kind");
-            TypeOfHand.Add(8, "Straight Flush");
-            TypeOfHand.Add(9, "Royal Flush");
+            TypeOfHand.Add((int)Pokerhands.HighCard,        "High Card");
+            TypeOfHand.Add((int)Pokerhands.Pair,            "Pair");
+            TypeOfHand.Add((int)Pokerhands.TwoPair,         "Two Pair");
+            TypeOfHand.Add((int)Pokerhands.ThreeOfAKind,    "Three Of A Kind");
+            TypeOfHand.Add((int)Pokerhands.Straight,        "Straight");
+            TypeOfHand.Add((int)Pokerhands.Flush,           "Flush");
+            TypeOfHand.Add((int)Pokerhands.FullHouse,       "Full House");
+            TypeOfHand.Add((int)Pokerhands.FourOfAKind,     "Four Of A Kind");
+            TypeOfHand.Add((int)Pokerhands.StraightFlush,   "Straight Flush");
+            TypeOfHand.Add((int)Pokerhands.RoyalFlush,      "Royal Flush");
         }
 
         private static void PrintPossibleHandsToSearchFor()
         {
-            Console.WriteLine("Key : Type of hand");
+            Console.WriteLine("+-----------------------+");
+            Console.WriteLine("| Key : Type of hand    |");
+            Console.Write(("+").PadRight(24, '-'));
+            Console.WriteLine("+");
+            string format;
             foreach (var item in TypeOfHand)
             {
-                Console.WriteLine($"{item.Key} : {item.Value}");
+                format = String.Format("|  {0}  : {1,15} |", item.Key, item.Value);
+                Console.WriteLine(format);
             }
+            Console.Write(("+").PadRight(24, '-'));
+            Console.WriteLine("+");
         }
 
         private static Hand LetUserDecideWantedHand()
         {
-            Console.WriteLine("Select key");
+            Console.Write("Select key: ");
             int typeofhand;
             while (!int.TryParse(Console.ReadLine(), out typeofhand))
             {
                 Console.WriteLine("Invalid key, try again");
             }
+            Console.WriteLine($"Let's get a {TypeOfHand[typeofhand]}!");
             return new FakePokerHands(typeofhand).GetHand();
         }
     }
