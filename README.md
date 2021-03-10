@@ -20,5 +20,12 @@ The hand is analysed and given ranks according to the keys in the table below.
                                     +-----------------------+
 
 When a dealt hand contains all ranks in the wanted hand, the shuffling stops and the hand is presented.
+                                        +---------------+
+                                        | 13 :   Spades |
+                                        |  1 :   Spades |
+                                        | 10 :   Spades |
+                                        | 11 :   Spades |
+                                        | 12 :   Spades |
+                                        +---------------+
 
 The algorithm tops around 200 000 shuffles/s.
