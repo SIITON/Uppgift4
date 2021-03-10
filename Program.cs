@@ -36,10 +36,10 @@ namespace Uppgift4
                 poker.CheckHand();
             }
             var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;
-            var avg = poker.NumOfShuffles / elapsedTotalSeconds;
+            var avgShufflesPerSecond = poker.NumOfShuffles / elapsedTotalSeconds;
 
-            Console.WriteLine($"Done! In {elapsedTotalSeconds:N2} s, shuffles per second: {avg:N1}");
-            Console.WriteLine($"Hand given after {poker.NumOfShuffles} shuffles.");
+            Console.WriteLine($"Done! In {elapsedTotalSeconds:N2} s, shuffles per second: {avgShufflesPerSecond:N1}");
+            Console.WriteLine($"Hand given after {poker.NumOfShuffles} shuffles:");
             poker.ShowHand();
         }
 
