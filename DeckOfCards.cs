@@ -18,7 +18,6 @@ namespace Uppgift4
                 Order[i] = i;
             }
             CreateDeck(Order.Length);
-            Console.WriteLine($"Deck of size {Order.Length} initialized.");
         }
 
         private void CreateDeck(int length)
