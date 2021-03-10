@@ -70,8 +70,10 @@ namespace Uppgift4
             }
 
             HighCard = (Values.Min() == 1) ? 14 : Values.Max();
-
-            ranks.Add((int)Pokerhands.HighCard);
+            if (HighCard == 14)
+            {
+                ranks.Add((int)Pokerhands.HighCard);
+            }
             if (ranks.Contains((int)Pokerhands.ThreeOfAKind) && ranks.Contains((int)Pokerhands.Pair))
             {
                 ranks.Add((int)Pokerhands.FullHouse);
