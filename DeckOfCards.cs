@@ -35,7 +35,7 @@ namespace Uppgift4
                 }
             }
         }
-        // Returns the top 5 cards in the deck representing by indices in the deck
+        // Returns the top 5 cards in the deck
         public List<int> DealtCards()
         {
             return Order.Take(5).ToList();

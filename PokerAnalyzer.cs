@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Uppgift4
 {
     internal class PokerAnalyzer
     {
-        private List<int> Values { get; set; }
         public bool WantedHandDealt { get; private set; }
         public int NumOfShuffles { get; private set; }
         private Hand _wantedHand { get; set; }
@@ -19,7 +19,7 @@ namespace Uppgift4
             WantedHandDealt = false;
         }
 
-        internal void CheckHand()
+        public void CheckHand()
         {
             var trueforall = _wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c));
             if (trueforall)
@@ -29,21 +29,18 @@ namespace Uppgift4
             }     
         }
 
-        internal void ShowHand()
+        public void ShowHand()
         {
             for (int i = 0; i < _hand.Values.Count; i++)
             {
                 Console.WriteLine($"{_hand.Values[i]}:{_hand.Faces[i]}");
             }
-            foreach (var item in _hand.RankOfHand)
-            {
-                Console.WriteLine($"Rank: {item}");
-            }
+            Console.WriteLine($"Highest rank: {_hand.RankOfHand.Max()}");
             Console.WriteLine($"Highcard: {_hand.HighCard}");
             
         }
 
-        internal void DealHand()
+        public void DealHand()
         {
             _deck.Shuffle();
             NumOfShuffles++;

@@ -12,6 +12,9 @@ namespace Uppgift4
             _hand = new Hand();
             switch (rank)
             {
+                case 0:
+                    CreateHighCardWithAce();
+                    break;
                 case 1:
                     CreatePair();
                     break;
@@ -44,6 +47,15 @@ namespace Uppgift4
                     break;
             }
             
+        }
+
+        private void CreateHighCardWithAce()
+        {
+            _hand.AddCard(4, "Diamonds");
+            _hand.AddCard(1, "Hearts");
+            _hand.AddCard(7, "Clover");
+            _hand.AddCard(10, "Hearts");
+            _hand.AddCard(12, "Spades");
         }
 
         private void CreateFullHouse()
