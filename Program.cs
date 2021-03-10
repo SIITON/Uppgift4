@@ -30,11 +30,8 @@ namespace Uppgift4
             var stopwatch = Stopwatch.StartNew();
             var poker = new PokerAnalyzer(wantedHand);
             Console.WriteLine("Starting...");
-            while (!poker.WantedHandDealt)
-            {
-                poker.DealNewHand();
-                poker.CheckHand();
-            }
+            poker.Run();
+            
             var elapsedTotalSeconds = stopwatch.Elapsed.TotalSeconds;
             var avgShufflesPerSecond = poker.NumOfShuffles / elapsedTotalSeconds;
 

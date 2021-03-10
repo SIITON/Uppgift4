@@ -43,6 +43,15 @@ namespace Uppgift4
             
         }
 
+        public void Run()
+        {
+            while (!WantedHandDealt)
+            {
+                DealNewHand();
+                CheckHand();
+            }
+        }
+
         public void DealNewHand()
         {
             _deck.Shuffle();
