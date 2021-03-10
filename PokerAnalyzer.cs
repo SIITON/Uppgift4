@@ -22,11 +22,10 @@ namespace Uppgift4
 
         public void CheckHand()
         {
-            var trueforall = _wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c));
-            if (trueforall)
+            if (_wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c)))
             {
                 WantedHandDealt = true;
-            }     
+            }
         }
 
         public void ShowHand()
@@ -34,8 +33,7 @@ namespace Uppgift4
             Console.WriteLine("+---------------+");
             for (int i = 0; i < _hand.Values.Count; i++)
             {
-                var format = String.Format("| {0,2} : {1,8} |", _hand.Values[i], _hand.Faces[i]);
-                Console.WriteLine(format);
+                Console.WriteLine(String.Format("| {0,2} : {1,8} |", _hand.Values[i], _hand.Faces[i]));
             }
             Console.WriteLine("+---------------+");
             Console.WriteLine($"Highest rank: {_hand.RankOfHand.Max()}");
@@ -67,16 +65,16 @@ namespace Uppgift4
         }
         public static void DefineTypesOfPokerHands()
         {
-            TypeOfHand.Add((int)Pokerhands.HighCard, "High Card (Ace)");
-            TypeOfHand.Add((int)Pokerhands.Pair, "Pair");
-            TypeOfHand.Add((int)Pokerhands.TwoPair, "Two Pair");
-            TypeOfHand.Add((int)Pokerhands.ThreeOfAKind, "Three Of A Kind");
-            TypeOfHand.Add((int)Pokerhands.Straight, "Straight");
-            TypeOfHand.Add((int)Pokerhands.Flush, "Flush");
-            TypeOfHand.Add((int)Pokerhands.FullHouse, "Full House");
-            TypeOfHand.Add((int)Pokerhands.FourOfAKind, "Four Of A Kind");
-            TypeOfHand.Add((int)Pokerhands.StraightFlush, "Straight Flush");
-            TypeOfHand.Add((int)Pokerhands.RoyalFlush, "Royal Flush");
+            TypeOfHand.Add((int)Pokerhands.HighCard,        "High Card (Ace)");
+            TypeOfHand.Add((int)Pokerhands.Pair,            "Pair");
+            TypeOfHand.Add((int)Pokerhands.TwoPair,         "Two Pair");
+            TypeOfHand.Add((int)Pokerhands.ThreeOfAKind,    "Three Of A Kind");
+            TypeOfHand.Add((int)Pokerhands.Straight,        "Straight");
+            TypeOfHand.Add((int)Pokerhands.Flush,           "Flush");
+            TypeOfHand.Add((int)Pokerhands.FullHouse,       "Full House");
+            TypeOfHand.Add((int)Pokerhands.FourOfAKind,     "Four Of A Kind");
+            TypeOfHand.Add((int)Pokerhands.StraightFlush,   "Straight Flush");
+            TypeOfHand.Add((int)Pokerhands.RoyalFlush,      "Royal Flush");
         }
 
         public static void PrintPossibleHandsToSearchFor()
@@ -104,7 +102,7 @@ namespace Uppgift4
                 }
                 if (!isInRange)
                 {
-                    Console.WriteLine("Invalid key, try again");
+                    Console.WriteLine("Invalid key, try again!");
                 }
             }
             Console.WriteLine($"Let's get a {TypeOfHand[typeofhand]}!");
