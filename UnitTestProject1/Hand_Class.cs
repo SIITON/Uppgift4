@@ -5,7 +5,7 @@ using System.Linq;
 using Uppgift4;
 using Uppgift4.Extensions;
 
-namespace UnitTestProject1
+namespace Uppgift4.Tests
 {
     [TestClass]
     public class Hand_Class
