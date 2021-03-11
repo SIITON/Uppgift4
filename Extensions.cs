@@ -20,15 +20,15 @@ namespace Uppgift4.Extensions
 		public static IEnumerable<int> Triplets(this IEnumerable<int> sequence)
 		{
 			return sequence.GroupBy(x => x)
-						   .Where(g => g.Count() == 3)
-						   .Select(g => g.Key);
+				.Where(g => g.Count() == 3)
+				.Select(g => g.Key);
 
 		}
 		public static IEnumerable<int> Quadruplets(this IEnumerable<int> sequence)
 		{
 			return sequence.GroupBy(x => x)
-						   .Where(g => g.Count() == 4)
-						   .Select(g => g.Key);
+				.Where(g => g.Count() == 4)
+				.Select(g => g.Key);
 
 		}
 		public static bool IsFlush(this List<string> sequence)
