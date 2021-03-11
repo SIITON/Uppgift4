@@ -12,11 +12,13 @@ namespace Uppgift4.Extensions
                            .Where(g => g.Count() == 2)
                            .Select(g => g.Key);
         }
+
         public static List<int> Ordered(this IEnumerable<int> sequence)
         {
             return sequence.OrderBy(x => x)
                            .ToList();
         }
+
 		public static IEnumerable<int> Triplets(this IEnumerable<int> sequence)
 		{
 			return sequence.GroupBy(x => x)
@@ -24,6 +26,7 @@ namespace Uppgift4.Extensions
 						   .Select(g => g.Key);
 
 		}
+
 		public static IEnumerable<int> Quadruplets(this IEnumerable<int> sequence)
 		{
 			return sequence.GroupBy(x => x)
@@ -31,6 +34,7 @@ namespace Uppgift4.Extensions
 						   .Select(g => g.Key);
 
 		}
+
 		public static bool IsFlush(this List<string> sequence)
         {
 			var isFlush = false;
@@ -40,6 +44,7 @@ namespace Uppgift4.Extensions
 			}
 			return isFlush;
 		}
+
         public static bool IsStraight(this IEnumerable<int> sequence)
         {
 			var isStraight = false;
