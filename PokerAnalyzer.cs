@@ -22,20 +22,16 @@ namespace Uppgift4
 
         public void CheckHand()
         {
+            //if (_wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c)))
             if (_hand.RankOfHand.Contains(_wantedHand.RankOfHand.Max()))
             {
                 WantedHandDealt = true;
             }
-            //if (_wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c)))
-            //{
-            //    WantedHandDealt = true;
-            //}
         }
 
         public void ShowHand()
         {
             Console.WriteLine("+---------------+");
-
             for (int i = 0; i < _hand.Values.Count; i++)
             {
                 Console.WriteLine(String.Format("| {0,2} : {1,8} |", _hand.Values[i], _hand.Faces[i]));
