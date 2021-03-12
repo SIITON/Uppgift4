@@ -40,6 +40,7 @@ namespace Uppgift4
                 Console.WriteLine($"- Shuffles:   {poker.NumOfShuffles}");
                 Console.WriteLine($"- Shuffles/s: {avgShufflesPerSecond:N1}");
                 poker.ShowHand();
+                poker.ShowRankStatistics();
             } while (UserWantsToRunAgain());
             
         }

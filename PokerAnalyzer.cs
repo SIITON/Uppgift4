@@ -12,33 +12,66 @@ namespace Uppgift4
         private Hand _hand;
         private DeckOfCards _deck;
         public static Dictionary<int, string> TypeOfHand = new Dictionary<int, string>();
+        public List<int> HandsDealt = new List<int>(10);
         public PokerAnalyzer(Hand wantedhand)
         {
             _wantedHand = wantedhand;
             _deck = new DeckOfCards();
             NumOfShuffles = 0;
             WantedHandDealt = false;
+            for (int i = 0; i < 10; i++)
+            {
+                HandsDealt.Add(0);
+            }
         }
 
         public void CheckHand()
         {
-            //if (_wantedHand.RankOfHand.TrueForAll(c => _hand.RankOfHand.Contains(c)))
             if (_hand.RankOfHand.Contains(_wantedHand.RankOfHand.Max()))
             {
                 WantedHandDealt = true;
             }
+            if (_hand.RankOfHand.Count != 0)
+            {
+                AddRankToStatistics(_hand.RankOfHand.Max());
+            }
+        }
+
+        private void AddRankToStatistics(int rank)
+        {
+            HandsDealt[rank]++;
         }
 
         public void ShowHand()
         {
-            Console.WriteLine("+---------------+");
+            Console.WriteLine("+----------------+");
+            Console.WriteLine("| Val :   Face   |");
+            Console.WriteLine("+----------------+");
             for (int i = 0; i < _hand.Values.Count; i++)
             {
-                Console.WriteLine(String.Format("| {0,2} : {1,8} |", _hand.Values[i], _hand.Faces[i]));
+                if (_hand.Values[i] == _hand.HighCard || _hand.Values[i] == 1)
+                {
+                    Console.WriteLine(String.Format("| {0,3} : {1,8} |  <-- High card", _hand.Values[i], _hand.Faces[i]));
+                }
+                else
+                {
+                    Console.WriteLine(String.Format("| {0,3} : {1,8} |", _hand.Values[i], _hand.Faces[i]));
+                }
             }
-            Console.WriteLine("+---------------+");
-            Console.WriteLine($"Highest rank: {_hand.RankOfHand.Max()}");
-            Console.WriteLine($"Highcard: {_hand.HighCard}");
+            Console.WriteLine("+----------------+");
+        }
+
+        internal void ShowRankStatistics()
+        {
+            Console.WriteLine("\nAll hands dealt during search:");
+            Console.WriteLine("+--------------------------+");
+            int i = 0;
+            foreach (var num_of_ranks in HandsDealt)
+            {
+                Console.WriteLine("| {0,6} : {1,15} |", num_of_ranks, TypeOfHand[i]);
+                i++;
+            }
+            Console.WriteLine("+--------------------------+");
         }
 
         public void Run()
