@@ -61,7 +61,7 @@ namespace Uppgift4
             Console.WriteLine("+----------------+");
         }
 
-        internal void ShowRankStatistics()
+        public void ShowRankStatistics()
         {
             Console.WriteLine("\nAll hands dealt during search:");
             Console.WriteLine("+--------------------------+");
