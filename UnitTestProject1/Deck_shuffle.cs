@@ -30,7 +30,7 @@ namespace Uppgift4.Tests
 			/*
 			 *		Statistically we should have:
 			 *		-	123 552 counts of two pair hands ( 4.75 % of hands)
-			 *		-	10 200 counts of straight hands ( 0.39 % of hands)
+			 *		-	 10 200 counts of straight hands ( 0.39 % of hands)
 			 *		Let's accept 5 % error
 			 */
 			var err = 0.05;
