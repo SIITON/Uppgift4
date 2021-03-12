@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Uppgift4
 {
-    internal class PokerAnalyzer
+    public class PokerAnalyzer
     {
         public bool WantedHandDealt { get; private set; }
         public int NumOfShuffles { get; private set; }
@@ -64,14 +64,18 @@ namespace Uppgift4
         public void ShowRankStatistics()
         {
             Console.WriteLine("\nAll hands dealt during search:");
-            Console.WriteLine("+--------------------------+");
+            Console.WriteLine("+---------------------------------+");
+            Console.WriteLine("|  Total :   Type of hand  :  [%] |");
+            Console.WriteLine("+---------------------------------+");
             int i = 0;
             foreach (var num_of_ranks in HandsDealt)
             {
-                Console.WriteLine("| {0,6} : {1,15} |", num_of_ranks, TypeOfHand[i]);
+                var percentage = Math.Round((double) 100*num_of_ranks / NumOfShuffles,2);
+                Console.WriteLine("| {0,6} : {1,15} : {2,5}|", num_of_ranks, TypeOfHand[i], percentage);
                 i++;
             }
-            Console.WriteLine("+--------------------------+");
+            Console.WriteLine("+---------------------------------+");
+            //Console.WriteLine("+--------------------------+");
         }
 
         public void Run()
